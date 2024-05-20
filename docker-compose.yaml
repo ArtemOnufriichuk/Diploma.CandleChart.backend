@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: abracad322
+  back:
+    build: .
+    ports:
+      - 3001:3001
+    depends_on:
+      - db
+    command: bash -c "sleep 10 && npm run start-prod"
